@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{fragments/head}"/>
+<body>
+<th:block th:if="${#authentication.getAuthorities().size()==1}">
+    <th:block th:include="~{fragments/header-home-guest}"/>
+</th:block>
+
+<th:block th:unless="${#authentication.getAuthorities().size()==1}">
+    <th:block th:include="~{fragments/header-home-moderator}"/>
+</th:block>
+<main>
+    <div class="text-center mb-3">
+        <h4 class="text-white mt-2">Here are the companies, <span th:text="${#authentication.getName()}" ></span> </h4>
+    </div>
+
+    <div class="text-center mt-4">
+        <th:block th:each="company: ${companies}">
+            <div class="text-center">
+                <a class="nav-link btn-primary text-white w-15 mb-3 ml-lg-10 h5" th:href="@{'/engineers/details/' + ${company.getName()}}"
+                   th:text="|${company.getName()} ${title} - ${company.getRating()}|">
+                </a>
+            </div>
+
+        </th:block>
+
+    </div>
+
+</main>
+<th:block th:include="~{fragments/footer}" />
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{fragments/head}"/>
+
+<body>
+<th:block th:include="~{fragments/header-home-moderator}"/>
+
+<main>
+    <div class="container">
+        <div class="text-center bg-blur">
+            <h1>Auction winners</h1>
+            <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="align-middle" th:text="${project.name}" ></h3>
+                    </div>
+
+                    <th:block th:each="engineer: ${project.getEngineers()}">
+
+                    <div class="col-md-3">
+                        <h3 class="align-middle" th:text="${engineer.name}"></h3>
+                        <p class="align-content-center">Years Experience : [[${engineer.experienceYears}]]</p>
+                        <p class="align-content-center">Number of Projects : [[${engineer.getProjects().size()}]]</p>
+                    </div>
+
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<th:block th:include="~{fragments/footer}" />
+
+</body>
+</html>

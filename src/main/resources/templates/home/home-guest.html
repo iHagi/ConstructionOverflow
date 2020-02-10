@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{fragments/head}"/>
+<body>
+<th:block th:include="~{fragments/header-home-guest}"/>
+<main>
+
+    <div class="text-center mb-3">
+        <h2 class="text-white mt-4">Welcome to the portal, <span th:text="${#authentication.getName()}" ></span>!</h2>
+        <h2 class="text-white mt-1">Create your own project and see who is going to be the best fit for it!</h2>
+    </div>
+    <hr class="my-3"/>
+    <div class="container">
+        <div class="text-center text-white mt-3">
+
+            <a href="/projects/create" class="btn btn-secondary">Create Project</a>
+
+        </div>
+
+    </div>
+</main>
+
+<th:block th:include="~{fragments/footer}" />
+</body>
+</html>

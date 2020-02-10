@@ -1,0 +1,31 @@
+<header>
+    <nav class="navbar bg-white navbar-expand-lg navbar-background bg-white ">
+        <a class="navbar-brand text-dark h4" href="/home">Engineers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <ul class="navbar-nav row">
+                <li class="nav-item mr-2">
+                    <a class="nav-link text-dark active h5" href="/projects/auctioneer">Auctioneer</a>
+                </li>
+                <li class="nav-item mr-2">
+                    <a class="nav-link text-dark active h5" href="/projects/create">Create Project</a>
+                </li>
+                <li class="nav-item mr-2">
+                    <a class="nav-link text-dark active h5" href="/create_engineer">Create Engineer</a>
+                </li>
+                <li class="nav-item mr-2">
+                    <a class="nav-link text-dark active h5" href="/create_company">Create Company</a>
+                </li>
+
+                <li class="nav-item mr-2">
+                    <form th:action="@{/logout}" method="post">
+                        <button class="btn btn-primary active h4" type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

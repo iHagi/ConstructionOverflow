@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:include="~{fragments/head}"/>
+
+<body>
+<th:block th:if="${#authentication.getAuthorities().size()==1}">
+    <th:block th:include="~{fragments/header-home-guest}"/>
+</th:block>
+
+<th:block th:unless="${#authentication.getAuthorities().size()==1}">
+    <th:block th:include="~{fragments/header-home-moderator}"/>
+</th:block>
+
+<main>
+    <div class="container">
+        <div class="text-center bg-blur">
+            <h1 class="text-white mt-3">Engineer</h1>
+            <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="align-middle" th:text="${engineer.name}" ></h3>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="align-middle" th:text="${engineer.rating}"></h3>
+                        <p class="align-content-center">Years Experience : [[${engineer.experienceYears}]]</p>
+                        <p class="align-content-center">Number of Projects : [[${engineer.getProjects().size()}]]</p>
+                    </div>
+                    <div class="col-md-4">
+                        <th:block th:switch="${engineer.gender.name()}">
+                            <img th:case="'MALE'" src="/img/male.jpg" alt="photo"
+                                 class="align-middle" height="175"
+                                 width="150"/>
+                            <img th:case="'FEMALE'" src="/img/female.png" alt="photo"
+                                 class="align-middle" height="175"
+                                 width="150"/>
+                        </th:block>
+                    </div>
+                </div>
+                <div class="row mt-5">
+
+                    <th:block th:each="project: ${engineer.getProjects()}">
+
+                        <div class="col-md-3 ml-4">
+                            <h3 class="text-white" th:text="${project.getName()}"></h3>
+                            <h5 class="text-white" th:text="${project.getLocation()}"></h5>
+
+                            <th:block th:if="${project.structure.toString() == 'INDUSTRIAL'}">
+                            <img th:src="@{/img/industrial.jpg}" class="border border-secondary" alt="industrial" width="110"
+                                 height="100"/>
+                            </th:block>
+
+                            <th:block th:if="${project.structure.toString() == 'RESIDENTIAL'}">
+                                <img th:src="@{/img/residential.png}" class="border border-secondary" alt="residential" width="110"
+                                     height="100"/>
+                            </th:block>
+
+                            <th:block th:if="${project.structure.toString() == 'ADMINISTRATIVE'}">
+                                <img th:src="@{/img/administrative.jpg}" class="border border-secondary" alt="administrative" width="110"
+                                     height="100"/>
+                            </th:block>
+
+                            <th:block th:if="${project.structure.toString() == 'BRIDGE'}">
+                                <img th:src="@{/img/bridge.jpg}" class="border border-secondary" alt="bridge" width="110"
+                                     height="100"/>
+                            </th:block>
+
+                            <th:block th:if="${project.structure.toString() == 'DAM'}">
+                                <img th:src="@{/img/dam.png}" class="border border-secondary" alt="dam" width="110"
+                                     height="100"/>
+                            </th:block>
+
+                        </div>
+
+
+                    </th:block>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<th:block th:include="~{fragments/footer}" />
+
+</body>
+</html>

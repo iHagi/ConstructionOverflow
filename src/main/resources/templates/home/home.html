@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<th:block th:include="~{fragments/head}"/>
+<body>
+<th:block th:include="~{fragments/header-home-moderator}"/>
+<main>
+    <div class="text-center mb-3">
+        <h2 class="text-white mt-4">Welcome to the portal, <span th:text="${#authentication.getName()}" ></span>!</h2>
+    </div>
+    <hr class="my-3"/>
+    <div class="container">
+        <div class="text-center text-white mt-3">
+
+            <a href="/create_engineer" class="btn btn-secondary">Create Engineer</a>
+
+            <a href="/all_engineers" class="btn btn-secondary">View Engineers</a>
+
+        </div>
+
+        <div class="text-center text-white mt-3">
+
+            <a href="/create_company" class="btn btn-secondary">Create Company</a>
+
+            <a href="/all_companies" class="btn btn-secondary">View Companies</a>
+
+        </div>
+
+    </div>
+</main>
+
+<th:block th:include="~{fragments/footer}" />
+</body>
+</html>
