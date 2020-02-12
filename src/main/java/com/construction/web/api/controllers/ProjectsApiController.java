@@ -62,7 +62,7 @@ public class ProjectsApiController  {
 
     @PostMapping("/api/projects/add-to-company/{id}")
     public void auctionizeProjectCompany(@PathVariable long id, HttpServletResponse response) throws IOException {
-
+        System.out.println();
         projectsService.addToCompanyById(id);
 
         response.sendRedirect("/projects/details_company/"+id);

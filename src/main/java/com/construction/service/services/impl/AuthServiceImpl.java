@@ -71,19 +71,4 @@ public class AuthServiceImpl implements AuthService {
         return roles;
     }
 
-    //todo delete login
-//    @Override
-//    public LoginUserServiceModel login(RegisterUserServiceModel serviceModel) throws Exception {
-//        String passwordHash = passwordEncoder.encode(serviceModel.getPassword());
-//        return usersRepository
-//                .findByUsernameAndPassword(serviceModel.getUsername(), passwordHash)
-//                .map(user -> {
-//                    int engCount = user.getEngineers() == null
-//                            ? 0
-//                            : user.getEngineers().size();
-//
-//                    return new LoginUserServiceModel(serviceModel.getUsername(), engCount);
-//                })
-//                .orElseThrow(() -> new Exception("Invalid user"));
-//    }
 }

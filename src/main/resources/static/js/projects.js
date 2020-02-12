@@ -23,15 +23,15 @@ const toString = ({ id, name, location, structure, squaredMeters, complexity, ow
         ? '<td><button class="btn btn-danger">Sold out</button></td>'
         : `<td>
             <form id="project-form-auctionize" class="auciton-project-form" data-id=${id} action="/api/projects/add-to-engineer/${id}" method="post">
-                <button class="btn btn-info" type="button">Auctionize</button>
+                <button class="btn btn-info" type="submit">Auctionize</button>
             </form>
            </td>`
 
     columns += ownedCom
         ? '<td><button class="btn btn-danger">Sold out</button></td>'
         : `<td>
-            <form id="project-form" class="auciton-project-form" data-id=${id} action="/api/projects/add-to-company/${id}" method="post">
-                <button class="btn btn-info">Auctionize</button>
+            <form id="project-form" class="auciton-project-company" data-id=${id} action="/api/projects/add-to-company/${id}" method="post">
+                <button class="btn btn-info" type="submit">Auctionize</button>
             </form>
            </td>`
     return `<tr>${columns}</tr>`
@@ -53,8 +53,9 @@ fetch(URLS.projects)
 
         loader.hide();
     });
-
-    $('#projects-table').on('submit','.auction-project-form', function (ev) {
+    
+    $('#projects-table').on('submit','.auction-project-form','.auciton-project-company', function (ev) {
+        ev.preventDefault();
       
         const url = $(this).attr('action');
 
@@ -64,4 +65,11 @@ fetch(URLS.projects)
 
                 window.location = '/projects/auctioneer';
             });
+
+    });
+
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
     });
